@@ -1,8 +1,10 @@
 fragment PageParts on Page {
+  title
   body
 }
 
-fragment PostParts on Post {
+fragment ComicsParts on Comics {
   title
+  imgSrc
   body
 }

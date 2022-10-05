@@ -50,13 +50,13 @@ type Query {
   document(collection: String, relativePath: String): DocumentNode!
   page(relativePath: String): Page!
   pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PageFilter): PageConnection!
-  post(relativePath: String): Post!
-  postConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PostFilter): PostConnection!
+  comics(relativePath: String): Comics!
+  comicsConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ComicsFilter): ComicsConnection!
 }
 
 input DocumentFilter {
   page: PageFilter
-  post: PostFilter
+  comics: ComicsFilter
 }
 
 type DocumentConnectionEdges {
@@ -82,13 +82,21 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter): DocumentConnection!
 }
 
-union DocumentNode = Page | Post
+union DocumentNode = Page | Comics
 
 type Page implements Node & Document {
+  title: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
 }
 
 input RichTextFilter {
@@ -98,6 +106,7 @@ input RichTextFilter {
 }
 
 input PageFilter {
+  title: StringFilter
   body: RichTextFilter
 }
 
@@ -112,35 +121,37 @@ type PageConnection implements Connection {
   edges: [PageConnectionEdges]
 }
 
-type Post implements Node & Document {
+type Comics implements Node & Document {
   title: String
-  body: String
+  imgSrc: String
+  body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input StringFilter {
+input ImageFilter {
   startsWith: String
   eq: String
   exists: Boolean
   in: [String]
 }
 
-input PostFilter {
+input ComicsFilter {
   title: StringFilter
-  body: StringFilter
+  imgSrc: ImageFilter
+  body: RichTextFilter
 }
 
-type PostConnectionEdges {
+type ComicsConnectionEdges {
   cursor: String!
-  node: Post
+  node: Comics
 }
 
-type PostConnection implements Connection {
+type ComicsConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
-  edges: [PostConnectionEdges]
+  edges: [ComicsConnectionEdges]
 }
 
 type Mutation {
@@ -150,22 +161,24 @@ type Mutation {
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   updatePage(relativePath: String!, params: PageMutation!): Page!
   createPage(relativePath: String!, params: PageMutation!): Page!
-  updatePost(relativePath: String!, params: PostMutation!): Post!
-  createPost(relativePath: String!, params: PostMutation!): Post!
+  updateComics(relativePath: String!, params: ComicsMutation!): Comics!
+  createComics(relativePath: String!, params: ComicsMutation!): Comics!
 }
 
 input DocumentMutation {
   page: PageMutation
-  post: PostMutation
+  comics: ComicsMutation
 }
 
 input PageMutation {
+  title: String
   body: JSON
 }
 
-input PostMutation {
+input ComicsMutation {
   title: String
-  body: String
+  imgSrc: String
+  body: JSON
 }
 
 schema {

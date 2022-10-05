@@ -20,35 +20,43 @@ const schema = defineSchema({
     {
       label: "Page Content",
       name: "page",
-      path: "content/page",
-      format: "mdx",
+      path: "content",
+      format: "md",
       fields: [
         {
+          type: "string",
+          label: "Otsikko",
+          name: "title",
+        },
+        {
           name: "body",
-          label: "Main Content",
+          label: "Sisältö",
           type: "rich-text",
           isBody: true,
         },
       ],
     },
     {
-      label: "Blog Posts",
-      name: "post",
-      path: "content/post",
+      label: "Comics",
+      name: "comics",
+      path: "comics",
+      format: "md",
       fields: [
         {
           type: "string",
-          label: "Title",
+          label: "Otsikko",
           name: "title",
         },
         {
-          type: "string",
-          label: "Blog Post Body",
+          type: 'image',
+          label: 'Sarjakuva',
+          name: 'imgSrc',
+        },
+        {
+          type: "rich-text",
+          label: "Kuvaus",
           name: "body",
           isBody: true,
-          ui: {
-            component: "textarea",
-          },
         },
       ],
     },
@@ -65,11 +73,13 @@ export const tinaConfig = defineConfig({
       if (["page"].includes(collection.name)) {
         if (document._sys.filename === "home") {
           return "/";
+        } else {
+          return `/${document._sys.filename}`;
         }
       }
 
-      if (["post"].includes(collection.name)) {
-        return `/posts/${document._sys.filename}`;
+      if (["comics"].includes(collection.name)) {
+        return `/comics/${document._sys.filename}`;
       }
 
       return undefined;

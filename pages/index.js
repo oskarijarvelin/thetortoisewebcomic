@@ -4,24 +4,25 @@ import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../.tina/__generated__/client";
 
 export default function Home(props) {
-  // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
     data: props.data,
   });
 
-  const content = data.page.body;
   return (
     <Layout>
-      <TinaMarkdown content={content} />
+      <h1 data-tinafield="title">{data.page.title}</h1>
+      <div data-tinafield="body">
+        <TinaMarkdown content={data.page.body} />
+      </div>
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
   const { data, query, variables } = await client.queries.page({
-    relativePath: "home.mdx",
+    relativePath: "home.md",
   });
 
   return {
@@ -29,7 +30,6 @@ export const getStaticProps = async () => {
       data,
       query,
       variables,
-      //myOtherProp: 'some-other-data',
     },
   };
 };
