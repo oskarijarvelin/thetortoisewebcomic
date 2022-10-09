@@ -3,7 +3,6 @@ import { Layout } from "../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../.tina/__generated__/client";
 import Head from 'next/head';
-import Link from 'next/link';
 import SingleComic from '../components/SingleComic';
 
 export default function Home(props) {
