@@ -1,5 +1,5 @@
 ---
 title: A Human Webcomic
-imgSrc: /uploads/1.png
+imgSrc: /uploads/5.png
 ---
 

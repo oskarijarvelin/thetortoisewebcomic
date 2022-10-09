@@ -1,5 +1,5 @@
 ---
 title: The World Map
-imgSrc: /uploads/1.png
+imgSrc: /uploads/3.png
 ---
 
