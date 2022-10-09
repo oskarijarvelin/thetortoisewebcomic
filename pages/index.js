@@ -18,9 +18,7 @@ export default function Home(props) {
       <Head>
         <title>The Tortoise Webcomic</title>
       </Head>
-      {data.comicsConnection.edges.map((c) => (
-        <SingleComic key={c.node.id} comic={c.node} />
-      ))}
+      <SingleComic comic={data.comicsConnection.edges[0].node} />
     </Layout>
   );
 }

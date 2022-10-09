@@ -9,10 +9,31 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 
 import { IoMenu } from 'react-icons/io5';
+import { BiHomeAlt, BiArchive } from 'react-icons/bi';
 import { SiSpringCreators } from 'react-icons/si';
 import { FaPatreon, FaTwitter, FaFacebook, FaInstagram, FaRedditAlien } from 'react-icons/fa';
+
+const mainMenu = [
+  { title: 'The Tortoise Webcomic', url: '/', icon: <BiHomeAlt /> },
+  { title: 'Comic Archive', url: '/comics', icon: <BiArchive /> },
+];
+
+const social = [
+  { title: 'Tortoise Shop', url: 'https://thetortoisewebcomic.creator-spring.com/', icon: <SiSpringCreators /> },
+  { title: 'Support us on Patreon', url: 'https://www.patreon.com/thetortoisewebcomic', icon: <FaPatreon /> },
+  { title: 'Follow us on Twitter', url: 'https://twitter.com/tortoisecomic', icon: <FaTwitter /> },
+  { title: 'Follow us on Facebook', url: 'https://www.facebook.com/thetortoisewebcomic', icon: <FaFacebook /> },
+  { title: 'Follow us on Instagram', url: 'https://www.instagram.com/thetortoisewebcomic/', icon: <FaInstagram /> },
+  { title: 'Follow us on Reddit', url: 'https://www.reddit.com/r/thetortoisewebcomic/', icon: <FaRedditAlien /> },
+];
 
 export const Layout = (props) => {
   const [ menu, setMenu ] = React.useState(false);
@@ -40,13 +61,10 @@ export const Layout = (props) => {
               </Link>
             </Typography>
 
-            <Box>
-              <IconLink href="https://thetortoisewebcomic.creator-spring.com/" icon={<SiSpringCreators />} />
-              <IconLink href="https://www.patreon.com/thetortoisewebcomic" icon={<FaPatreon />} />
-              <IconLink href="https://thetortoisewebcomic.creator-spring.com/" icon={<FaTwitter />} />
-              <IconLink href="https://www.facebook.com/thetortoisewebcomic" icon={<FaFacebook />} />
-              <IconLink href="https://www.instagram.com/thetortoisewebcomic/" icon={<FaInstagram />} />
-              <IconLink href="https://www.reddit.com/r/thetortoisewebcomic/" icon={<FaRedditAlien />} />
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+              {social.map((s, i) => (
+                <IconLink key={i} href={s.url} icon={s.icon} />
+              ))}
             </Box>
 
             <IconButton
@@ -70,8 +88,36 @@ export const Layout = (props) => {
         onOpen={toggleDrawer(true)}
         sx={{ top: '64px !important' }}
       >
-        <Box sx={{ width: 250, p: 4 }}>
-          <Typography>Testi</Typography>
+        <Box sx={{ width: 300 }}>
+          <List>
+            {mainMenu.map((s, index) => (
+              <ListItem key={index} disablePadding>
+                <Link href={s.url} color="inherit" sx={{ textDecoration: 'none', width: '100%' }} onClick={toggleDrawer(false)}>
+                  <ListItemButton>
+                    <ListItemIcon sx={{ fontSize: 22 }}>
+                      {s.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={s.title} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {social.map((s, index) => (
+              <ListItem key={index} disablePadding>
+                <Link href={s.url} color="inherit" sx={{ textDecoration: 'none', width: '100%' }} target="_blank" rel="noopener" onClick={toggleDrawer(false)}>
+                  <ListItemButton>
+                    <ListItemIcon sx={{ fontSize: 20 }}>
+                      {s.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={s.title} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
         </Box>
       </SwipeableDrawer>
 

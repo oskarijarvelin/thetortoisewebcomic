@@ -14,12 +14,12 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <h1 data-tinafield="title">{data.comics.title}</h1>
       <Link href={data.comics.imgSrc} >
         <a>
           <img data-tinafield="imgSrc" src={data.comics.imgSrc} />
         </a>
       </Link>
+      <h1 data-tinafield="title">{data.comics.title}</h1>
       <div data-tinafield="data.comics.body">
         <TinaMarkdown content={data.comics.body} />
         </div>
