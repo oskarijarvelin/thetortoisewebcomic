@@ -63,7 +63,7 @@ export const Layout = (props) => {
 
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
               {social.map((s, i) => (
-                <IconLink key={i} href={s.url} icon={s.icon} />
+                <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
               ))}
             </Box>
 
