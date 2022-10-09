@@ -2,6 +2,9 @@ import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Layout } from "../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../.tina/__generated__/client";
+import Head from 'next/head';
+import Link from 'next/link';
+import SingleComic from '../components/SingleComic';
 
 export default function Home(props) {
   const { data } = useTina({
@@ -12,18 +15,21 @@ export default function Home(props) {
 
   return (
     <Layout>
-      <h1 data-tinafield="title">{data.page.title}</h1>
-      <div data-tinafield="body">
-        <TinaMarkdown content={data.page.body} />
-      </div>
+      <Head>
+        <title>The Tortoise Webcomic</title>
+      </Head>
+      {data.comicsConnection.edges.map((c) => (
+        <SingleComic key={c.node.id} comic={c.node} />
+      ))}
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-  const { data, query, variables } = await client.queries.page({
+  /*const { data, query, variables } = await client.queries.page({
     relativePath: "home.md",
-  });
+  });*/
+  const { data, query, variables } = await client.queries.comicsConnection();
 
   return {
     props: {

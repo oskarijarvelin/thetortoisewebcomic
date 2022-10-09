@@ -2,6 +2,7 @@ import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { client } from "../../.tina/__generated__/client";
+import Link from 'next/link';
 
 export default function Home(props) {
 
@@ -14,7 +15,11 @@ export default function Home(props) {
   return (
     <Layout>
       <h1 data-tinafield="title">{data.comics.title}</h1>
-      <img data-tinafield="imgSrc" src={data.comics.imgSrc} />
+      <Link href={data.comics.imgSrc} >
+        <a>
+          <img data-tinafield="imgSrc" src={data.comics.imgSrc} />
+        </a>
+      </Link>
       <div data-tinafield="data.comics.body">
         <TinaMarkdown content={data.comics.body} />
         </div>
