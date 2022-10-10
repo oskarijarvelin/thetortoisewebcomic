@@ -1,4 +1,3 @@
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Layout } from "../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../.tina/__generated__/client";
@@ -26,7 +25,10 @@ export const getStaticProps = async () => {
   /*const { data, query, variables } = await client.queries.page({
     relativePath: "home.md",
   });*/
-  const { data, query, variables } = await client.queries.comicsConnection();
+  const { data, query, variables } = await client.queries.comicsConnection({
+    sort: 'date',
+    last: 1,
+  });
 
   return {
     props: {

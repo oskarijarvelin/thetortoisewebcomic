@@ -121,7 +121,7 @@ export const Layout = (props) => {
         </Box>
       </SwipeableDrawer>
 
-      <Box component="main" sx={{ mt: '64px', py: 4, px: 2, minHeight: 'calc(100vh - 120px)' }}>
+      <Box component="main" sx={{ mt: '64px', py: 8, px: 2, minHeight: 'calc(100vh - 120px)' }}>
         <Container maxWidth="lg">{props.children}</Container>
       </Box>
 
