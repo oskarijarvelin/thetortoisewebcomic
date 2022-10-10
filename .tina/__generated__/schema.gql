@@ -85,7 +85,7 @@ type Collection {
 union DocumentNode = Page | Comics
 
 type Page implements Node & Document {
-  title: String
+  title: String!
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -122,12 +122,32 @@ type PageConnection implements Connection {
 }
 
 type Comics implements Node & Document {
-  title: String
+  index: Float!
+  title: String!
+  date: String
   imgSrc: String
   body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input NumberFilter {
+  lt: Float
+  lte: Float
+  gte: Float
+  gt: Float
+  eq: Float
+  exists: Boolean
+  in: [Float]
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
 }
 
 input ImageFilter {
@@ -138,7 +158,9 @@ input ImageFilter {
 }
 
 input ComicsFilter {
+  index: NumberFilter
   title: StringFilter
+  date: DatetimeFilter
   imgSrc: ImageFilter
   body: RichTextFilter
 }
@@ -176,7 +198,9 @@ input PageMutation {
 }
 
 input ComicsMutation {
+  index: Float
   title: String
+  date: String
   imgSrc: String
   body: JSON
 }

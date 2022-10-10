@@ -10,9 +10,9 @@ const schema = defineSchema({
       process.env.HEAD,
     token: process.env.TINA_TOKEN,
     media: {
-      tina: {
-        mediaRoot: "uploads",
-        publicFolder: "public",
+      loadCustomStore: async () => {
+        const pack = await import("next-tinacms-cloudinary");
+        return pack.TinaCloudCloudinaryMediaStore;
       },
     },
   },
@@ -27,6 +27,8 @@ const schema = defineSchema({
           type: "string",
           label: "Otsikko",
           name: "title",
+          isTitle: true,
+          required: true,
         },
         {
           name: "body",
@@ -41,11 +43,40 @@ const schema = defineSchema({
       name: "comics",
       path: "comics",
       format: "md",
+      defaultItem: () => {
+        return {
+          date: new Date().toISOString(),
+        }
+      },
+      ui: {
+        filename: {
+          readonly: true,
+          slugify: values => {
+            return `${values?.index || '0'}_${values?.title?.toLowerCase().replace(/ /g, '_')}`
+          },
+        },
+      },
       fields: [
+        {
+          label: "Unique Index",
+          name: "index",
+          type: "number",
+          required: true,
+        },
         {
           type: "string",
           label: "Otsikko",
           name: "title",
+          isTitle: true,
+          required: true,
+        },
+        {
+          type: "datetime",
+          label: "Päivämäärä",
+          name: "date",
+          ui: {
+            dateFormat: 'DD.MM.YYYY'
+          }
         },
         {
           type: 'image',

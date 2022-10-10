@@ -4,7 +4,9 @@ fragment PageParts on Page {
 }
 
 fragment ComicsParts on Comics {
+  index
   title
+  date
   imgSrc
   body
 }
