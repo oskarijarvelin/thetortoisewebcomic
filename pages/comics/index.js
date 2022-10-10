@@ -67,7 +67,7 @@ export default function PostList(props) {
 export async function getServerSideProps(context) {
   const { data, query, variables } = await client.queries.comicsConnection({
     sort: 'date',
-    last: 2,
+    last: 10,
   });
 
   return {
