@@ -24,7 +24,7 @@ export default function Home(props) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const { data, query, variables } = await client.queries.comicsConnection({
     sort: 'date',
     last: 1,

@@ -19,7 +19,7 @@ export default function ComicNav({ current, newest }) {
                 </IconButton>
             </Link>
 
-            <Link href={`/comics/${current - 1}`} color="inherit" sx={{ textDecoration: 'none', fontSize: '48px', mx: 3, cursor: (current > 1) ? 'pointer' : 'not-allowed' }}>
+            <Link href={`/comics/${(current > 1) ? current - 1 : current}`} color="inherit" sx={{ textDecoration: 'none', fontSize: '48px', mx: 3, cursor: (current > 1) ? 'pointer' : 'not-allowed' }}>
                 <IconButton disabled={(current > 1) ? false : true} sx={{ fontSize: '48px', opacity: (current > 1) ? 1 : '0.2' }}>
                     <GrCaretNext />
                 </IconButton>
