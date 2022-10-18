@@ -13,7 +13,7 @@ export default function SingleComic({ comic, newest }) {
       <ComicNav current={comic.index} newest={newest} />
       <Link href={comic.imgSrc}>
         <a>
-          <img src={comic.imgSrc} width="100%" height="auto" alt={`#${comic.index} ${comic.title}`} />
+          <img src={comic.imgSrc} width="100%" height="auto" alt={`#${comic.index} ${comic.title}`} loading="lazy" />
         </a>
       </Link>
 
