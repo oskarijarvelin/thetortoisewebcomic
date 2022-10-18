@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.4",
+    "@fontsource/roboto": "^4.5.8",
     "@mui/material": "^5.10.8",
     "@tinacms/auth": "^0.50.4",
     "fs": "^0.0.1-security",
