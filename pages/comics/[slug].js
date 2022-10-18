@@ -2,12 +2,16 @@ import { Layout } from "../../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { client } from "../../.tina/__generated__/client";
+import { useRouter } from 'next/router'
 import Link from '../../components/Link';
+import ComicNav from '../../components/ComicNav';
+import SingleComic from '../../components/SingleComic';
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { GrLink } from 'react-icons/gr';
 import Moment from 'react-moment';
 import moment from 'moment';
+import fs from 'fs'
 
 export default function Home(props) {
 
@@ -17,32 +21,13 @@ export default function Home(props) {
     data: props.data,
   });
 
+  const router = useRouter();
+  const newest = parseInt(props.comicCount);
+  const current = parseInt(router.query.slug);
+
   return (
     <Layout>
-      <Box>
-
-        <Link href={data.comics.imgSrc}>
-          <a>
-            <img data-tinafield="imgSrc" src={data.comics.imgSrc} width="100%" height="auto" />
-          </a>
-        </Link>
-
-        <Typography variant="h3" component="h1" sx={{ mt: 4, mb: 8 }} data-tinafield="title">
-          <Link href={`/comics/${data.comics._sys.filename}`} color="inherit" sx={{ textDecoration: 'none' }}>
-            <small><GrLink /></small> {data.comics.title}
-          </Link>
-        </Typography>
-
-        <Typography sx={{ fontWeight: 500, color: '#666' }}>
-          <span data-tinafield="index">#{data.comics.index}</span>{' '}&bull;{' '}
-          <span data-tinafield="date"><Moment format="DD.MM.YYYY">{data.comics.date}</Moment></span>
-        </Typography>
-
-        <Box data-tinafield="body" sx={{ mt: 4 }}>
-          <TinaMarkdown content={data.comics.body} />
-        </Box>
-
-      </Box>
+      <SingleComic comic={data.comics} newest={newest} />
     </Layout>
   );
 }
@@ -64,11 +49,14 @@ export const getStaticProps = async (ctx) => {
     relativePath: ctx.params.slug + ".md",
   });
 
+  const comicCount = fs.readdirSync('./comics').length
+
   return {
     props: {
       data,
       query,
       variables,
+      comicCount,
     },
   };
 };

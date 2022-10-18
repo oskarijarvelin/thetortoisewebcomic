@@ -52,7 +52,7 @@ const schema = defineSchema({
         filename: {
           readonly: true,
           slugify: values => {
-            return `${values?.index || '0'}_${values?.title?.toLowerCase().replace(/ /g, '_')}`
+            return `${values?.index || '0'}`
           },
         },
       },

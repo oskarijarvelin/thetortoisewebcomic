@@ -6,7 +6,7 @@ export default function ExcerptComic({comic}) {
     <Box>
       <Link href={comic.imgSrc}>
         <a>
-          <img src={comic.imgSrc} width="100%" height="auto" />
+          <img src={comic.imgSrc} width="100%" height="auto" loading="lazy" />
         </a>
       </Link>
     </Box>
