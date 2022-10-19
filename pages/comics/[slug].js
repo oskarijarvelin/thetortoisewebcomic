@@ -22,7 +22,7 @@ export default function Home(props) {
 }
 
 export const getStaticPaths = async () => {
-  const { data } = await client.queries.comicsConnection();
+  const { data } = await client.queries.comicsConnection({ last: 999999999 });
   const paths = data.comicsConnection.edges.map((x) => {
     return { params: { slug: x.node._sys.filename } };
   });
