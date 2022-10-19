@@ -4,7 +4,7 @@ import Link from './Link';
 export default function ExcerptComic({ comic }) {
   return (
     <Box>
-      <Link href={comic.imgSrc}>
+      <Link href={`/comics/${comic._sys.filename}`}>
         <img src={comic.imgSrc} width="100%" height="auto" alt={`#${comic.index} ${comic.title}`} loading="lazy" />
       </Link>
     </Box>
