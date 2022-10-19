@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Link from './Link';
 
-export default function ExcerptComic({comic}) {
+export default function ExcerptComic({ comic }) {
   return (
     <Box>
       <Link href={comic.imgSrc}>

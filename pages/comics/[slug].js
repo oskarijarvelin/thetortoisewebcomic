@@ -1,5 +1,3 @@
-
-import { useRouter } from 'next/router'
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../../.tina/__generated__/client";
 import Layout from "../../components/Layout";

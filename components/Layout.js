@@ -36,9 +36,9 @@ const social = [
   { title: 'Follow us on Reddit', url: 'https://www.reddit.com/r/thetortoisewebcomic/', icon: <FaRedditAlien /> },
 ];
 
-export default function Layout({children, title, description}) {
-  const [ menu, setMenu ] = React.useState(false);
-  
+export default function Layout({ children, title, description }) {
+  const [menu, setMenu] = React.useState(false);
+
   const toggleDrawer = (open) => (event) => {
     if (
       event &&
@@ -65,7 +65,7 @@ export default function Layout({children, title, description}) {
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" color="inherit" sx={{ textDecoration: 'none' }}>
-                The Tortoise Webcomic
+              The Tortoise Webcomic
             </Link>
           </Typography>
 

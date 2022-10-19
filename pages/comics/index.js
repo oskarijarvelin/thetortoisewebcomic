@@ -25,7 +25,7 @@ export default function PostList(props) {
 
   function moveToPage(p) {
     setCurrentPage(p);
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -40,15 +40,15 @@ export default function PostList(props) {
       ))}
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} >
-        <Typography onClick={() => moveToPage(currentPage - 1)} sx={{ cursor: 'pointer', minWidth: '100px', '&:hover': { textDecoration:'underline' } }}>
+        <Typography onClick={() => moveToPage(currentPage - 1)} sx={{ cursor: 'pointer', minWidth: '100px', '&:hover': { textDecoration: 'underline' } }}>
           {(currentPage > 1) &&
             <>&larr; Newer</>
           }
         </Typography>
         <Typography>Page {currentPage}</Typography>
-        <Typography onClick={() => moveToPage(currentPage + 1)} sx={{ cursor: 'pointer', minWidth: '100px', '&:hover': { textDecoration:'underline' } }}>
+        <Typography onClick={() => moveToPage(currentPage + 1)} sx={{ cursor: 'pointer', minWidth: '100px', '&:hover': { textDecoration: 'underline' } }}>
           {((comics.length > 2) && (comics.length > currentPage * perPage)) &&
-            <>Older &rarr;</>  
+            <>Older &rarr;</>
           }
         </Typography>
       </Box>

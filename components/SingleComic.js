@@ -15,7 +15,7 @@ export default function SingleComic({ comic, newest }) {
         <img src={comic.imgSrc} width="100%" height="auto" alt={`#${comic.index} ${comic.title}`} loading="lazy" />
       </Link>
 
-      <Typography variant="h2" component="h1" sx={{ my: 4, fontSize: { xs: '32px', md: '40px', lg: '48px'} }}>
+      <Typography variant="h2" component="h1" sx={{ my: 4, fontSize: { xs: '32px', md: '40px', lg: '48px' } }}>
         <Link href={`/comics/${comic._sys.filename}`} color="inherit" sx={{ textDecoration: 'none' }}>
           <small><GrLink /></small> {comic.title}
         </Link>
@@ -25,7 +25,7 @@ export default function SingleComic({ comic, newest }) {
 
       <Box sx={{ mb: 8 }}>
         <TinaMarkdown content={comic.body} />
-      </Box> 
+      </Box>
       <ComicNav current={comic.index} newest={newest} />
     </Box>
   )
