@@ -1,7 +1,6 @@
-import { Layout } from "../components/Layout";
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../.tina/__generated__/client";
-import Head from 'next/head';
+import Layout from "../components/Layout";
 import SingleComic from '../components/SingleComic';
 import fs from 'fs';
 
@@ -15,10 +14,7 @@ export default function Home(props) {
   const newest = parseInt(props.comicCount);
 
   return (
-    <Layout>
-      <Head>
-        <title>The Tortoise Webcomic</title>
-      </Head>
+    <Layout title="The Tortoise Webcomic" description="The Tortoise Webcomic">
       <SingleComic comic={data.comicsConnection.edges[0].node} newest={newest} />
     </Layout>
   );

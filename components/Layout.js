@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Head from 'next/head';
 import IconLink from './IconLink';
 import Link from './Link';
 
@@ -35,7 +36,7 @@ const social = [
   { title: 'Follow us on Reddit', url: 'https://www.reddit.com/r/thetortoisewebcomic/', icon: <FaRedditAlien /> },
 ];
 
-export const Layout = (props) => {
+export default function Layout({children, title, description}) {
   const [ menu, setMenu ] = React.useState(false);
   
   const toggleDrawer = (open) => (event) => {
@@ -52,34 +53,41 @@ export const Layout = (props) => {
 
   return (
     <>
-        <AppBar position="fixed">
-          <Toolbar>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+      </Head>
+      <AppBar position="fixed">
+        <Toolbar>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link href="/" color="inherit" sx={{ textDecoration: 'none' }}>
-                  The Tortoise Webcomic
-              </Link>
-            </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link href="/" color="inherit" sx={{ textDecoration: 'none' }}>
+                The Tortoise Webcomic
+            </Link>
+          </Typography>
 
-            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-              {social.map((s, i) => (
-                <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
-              ))}
-            </Box>
+          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            {social.map((s, i) => (
+              <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
+            ))}
+          </Box>
 
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ ml: 2 }}
-              onClick={toggleDrawer(true)}
-            >
-              <IoMenu />
-            </IconButton>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ ml: 2 }}
+            onClick={toggleDrawer(true)}
+          >
+            <IoMenu />
+          </IconButton>
 
-          </Toolbar>
-        </AppBar>
+        </Toolbar>
+      </AppBar>
 
       <SwipeableDrawer
         anchor="right"
@@ -122,7 +130,7 @@ export const Layout = (props) => {
       </SwipeableDrawer>
 
       <Box component="main" sx={{ mt: '64px', py: 8, px: 2, minHeight: 'calc(100vh - 120px)' }}>
-        <Container maxWidth="lg">{props.children}</Container>
+        <Container maxWidth="lg">{children}</Container>
       </Box>
 
       <Box component="footer" sx={{ backgroundColor: "#FAFAFA", py: 2 }}>

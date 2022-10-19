@@ -1,16 +1,9 @@
-import { Layout } from "../../components/Layout";
-import { useTina } from "tinacms/dist/edit-state";
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import { client } from "../../.tina/__generated__/client";
+
 import { useRouter } from 'next/router'
-import Link from '../../components/Link';
-import ComicNav from '../../components/ComicNav';
+import { useTina } from "tinacms/dist/edit-state";
+import { client } from "../../.tina/__generated__/client";
+import Layout from "../../components/Layout";
 import SingleComic from '../../components/SingleComic';
-import { Box } from "@mui/material";
-import { Typography } from "@mui/material";
-import { GrLink } from 'react-icons/gr';
-import Moment from 'react-moment';
-import moment from 'moment';
 import fs from 'fs'
 
 export default function Home(props) {
@@ -21,12 +14,10 @@ export default function Home(props) {
     data: props.data,
   });
 
-  const router = useRouter();
   const newest = parseInt(props.comicCount);
-  const current = parseInt(router.query.slug);
 
   return (
-    <Layout>
+    <Layout title={`#${data.comics.index}: ${data.comics.title}`} description={`#${data.comics.index} ${data.comics.title}`}>
       <SingleComic comic={data.comics} newest={newest} />
     </Layout>
   );

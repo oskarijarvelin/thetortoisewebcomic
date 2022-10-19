@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Layout } from "../../components/Layout";
-import Head from 'next/head';
 import { useTina } from "tinacms/dist/edit-state";
 import { client } from "../../.tina/__generated__/client";
+import Layout from "../../components/Layout";
 import ExcerptComic from '../../components/ExcerptComic';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -30,10 +29,7 @@ export default function PostList(props) {
   }
 
   return (
-    <Layout>
-      <Head>
-        <title>Comic Archive - The Tortoise Webcomic</title>
-      </Head>
+    <Layout title="Comic Archive - The Tortoise Webcomic" description="Comic Archive - The Tortoise Webcomic">
 
       <Typography variant="h3" component="h1" sx={{ mb: 8 }}>Comic Archive</Typography>
 
