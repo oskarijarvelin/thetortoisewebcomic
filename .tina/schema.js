@@ -18,10 +18,18 @@ const schema = defineSchema({
   },
   collections: [
     {
-      label: "Page Content",
+      label: "Pages",
       name: "page",
       path: "content",
       format: "md",
+      ui: {
+        filename: {
+          readonly: true,
+          slugify: values => {
+            return `${values?.title || 'new_page'}`
+          },
+        },
+      },
       fields: [
         {
           type: "string",
