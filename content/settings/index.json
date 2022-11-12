@@ -1,3 +1,43 @@
 {
-  "title": "Yleiset asetukset"
+  "title": "Yleiset asetukset",
+  "site_title": "The Tortoise Webcomic",
+  "site_footer": "© 2022 The Tortoise Webcomic. All rights reserved.",
+  "spring": {
+    "title": "Tortoise Shop",
+    "url": "https://thetortoisewebcomic.creator-spring.com/"
+  },
+  "patreon":  {
+    "title": "Support us on Patreon",
+    "url": "https://www.patreon.com/thetortoisewebcomic"
+  },
+  "twitter":  {
+    "title": "Follow us on Twitter",
+    "url": "https://twitter.com/tortoisecomic"
+  },
+  "facebook":  {
+    "title": "Follow us on Facebook",
+    "url": "https://www.facebook.com/thetortoisewebcomic"
+  },
+  "instagram":  {
+    "title": "Follow us on Instagram",
+    "url": "https://www.instagram.com/thetortoisewebcomic/"
+  },
+  "reddit":  {
+    "title": "Follow us on Reddit",
+    "url": "https://www.reddit.com/r/thetortoisewebcomic/"
+  },
+  "nav_title_home": "The Tortoise Webcomic",
+  "nav_title_archive": "Comic Archive",
+  "mainnav": {
+    "nav": [
+      {
+        "url": "#",
+        "title": "Testi 1"
+      },
+      {
+        "url": "#",
+        "title": "Testi 2"
+      }
+    ]
+  }
 }

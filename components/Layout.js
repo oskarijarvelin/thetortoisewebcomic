@@ -25,17 +25,17 @@ import { FaPatreon, FaTwitter, FaFacebook, FaInstagram, FaRedditAlien } from 're
 import settings from "../content/settings/index.json";
 
 const mainMenu = [
-  { title: 'The Tortoise Webcomic', url: '/', icon: <BiHomeAlt /> },
-  { title: 'Comic Archive', url: '/comics', icon: <BiArchive /> },
+  { title: settings.nav_title_home, url: '/', icon: <BiHomeAlt /> },
+  { title: settings.nav_title_archive, url: '/comics', icon: <BiArchive /> },
 ];
 
 const social = [
-  { title: 'Tortoise Shop', url: 'https://thetortoisewebcomic.creator-spring.com/', icon: <SiSpringCreators /> },
-  { title: 'Support us on Patreon', url: 'https://www.patreon.com/thetortoisewebcomic', icon: <FaPatreon /> },
-  { title: 'Follow us on Twitter', url: 'https://twitter.com/tortoisecomic', icon: <FaTwitter /> },
-  { title: 'Follow us on Facebook', url: 'https://www.facebook.com/thetortoisewebcomic', icon: <FaFacebook /> },
-  { title: 'Follow us on Instagram', url: 'https://www.instagram.com/thetortoisewebcomic/', icon: <FaInstagram /> },
-  { title: 'Follow us on Reddit', url: 'https://www.reddit.com/r/thetortoisewebcomic/', icon: <FaRedditAlien /> },
+  { title: settings.spring.title, url: settings.spring.url, icon: <SiSpringCreators /> },
+  { title: settings.patreon.title, url: settings.patreon.url, icon: <FaPatreon /> },
+  { title: settings.twitter.title, url: settings.twitter.url, icon: <FaTwitter /> },
+  { title: settings.facebook.title, url: settings.facebook.url, icon: <FaFacebook /> },
+  { title: settings.instagram.title, url: settings.instagram.url, icon: <FaInstagram /> },
+  { title: settings.reddit.title, url: settings.reddit.url, icon: <FaRedditAlien /> },
 ];
 
 export default function Layout({ children, title, description }) {
@@ -67,7 +67,7 @@ export default function Layout({ children, title, description }) {
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" color="inherit" sx={{ textDecoration: 'none' }}>
-              The Tortoise Webcomic
+              {settings.site_title}
             </Link>
           </Typography>
 
@@ -112,6 +112,16 @@ export default function Layout({ children, title, description }) {
                 </Link>
               </ListItem>
             ))}
+            {settings.mainnav.nav.map((item, index) => (
+              <ListItem key={index} disablePadding>
+                <Link href={item.url} color="inherit" sx={{ textDecoration: 'none', width: '100%' }} onClick={toggleDrawer(false)}>
+                  <ListItemButton>
+                    <ListItemIcon sx={{ fontSize: 22 }}></ListItemIcon>
+                    <ListItemText primary={item.title} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
           </List>
           <Divider />
           <List>
@@ -138,7 +148,7 @@ export default function Layout({ children, title, description }) {
       <Box component="footer" sx={{ backgroundColor: "#FAFAFA", py: 2 }}>
         <Container maxWidth="lg">
           <Typography component="p" align="center">
-            &copy; 2022 The Tortoise Webcomic. All rights reserved.
+            {settings.site_footer.replace("{year}", new Date().getFullYear())}
           </Typography>
         </Container>
       </Box>
