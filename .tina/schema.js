@@ -39,6 +39,14 @@ const schema = defineSchema({
           required: true,
         },
         {
+          type: 'string',
+          label: 'Metakuvaus (50-160 merkkiä)',
+          name: 'description',
+          ui: {
+            component: 'textarea',
+          },
+        },
+        {
           name: "body",
           label: "Sisältö",
           type: "rich-text",

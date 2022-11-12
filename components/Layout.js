@@ -22,7 +22,7 @@ import { BiHomeAlt, BiArchive } from 'react-icons/bi';
 import { SiSpringCreators } from 'react-icons/si';
 import { FaPatreon, FaTwitter, FaFacebook, FaInstagram, FaRedditAlien } from 'react-icons/fa';
 
-import settings from "../content/settings/index.json";
+import settings from "../settings.json";
 
 const mainMenu = [
   { title: settings.nav_title_home, url: '/', icon: <BiHomeAlt /> },
