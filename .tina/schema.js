@@ -26,7 +26,7 @@ const schema = defineSchema({
         filename: {
           readonly: true,
           slugify: values => {
-            return `${values?.title || 'new_page'}`
+            return `${values?.title?.toLowerCase().replace(/ /g, '-') || 'new_page'}`
           },
         },
       },
