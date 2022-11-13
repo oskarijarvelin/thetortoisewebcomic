@@ -4,6 +4,8 @@ import Layout from "../components/Layout";
 import SingleComic from '../components/SingleComic';
 import fs from 'fs';
 
+import settings from "../settings.json";
+
 export default function Home(props) {
   const { data } = useTina({
     query: props.query,
@@ -14,7 +16,7 @@ export default function Home(props) {
   const newest = parseInt(props.comicCount);
 
   return (
-    <Layout title="The Tortoise Webcomic" description="The Tortoise Webcomic">
+    <Layout title="The Tortoise Webcomic" description={`${settings.site_slogan} - ${settings.site_slogan}`}>
       <SingleComic comic={data.comicsConnection.edges[0].node} newest={newest} />
     </Layout>
   );
