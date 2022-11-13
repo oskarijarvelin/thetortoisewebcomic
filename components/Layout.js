@@ -29,6 +29,10 @@ const mainMenu = [
   { title: settings.nav_title_archive, url: '/comics', icon: <BiArchive /> },
 ];
 
+const mobileMenu = [
+  { title: settings.nav_title_archive, url: '/comics' },
+];
+
 const social = [
   { title: settings.spring.title, url: settings.spring.url, icon: <SiSpringCreators /> },
   { title: settings.patreon.title, url: settings.patreon.url, icon: <FaPatreon /> },
@@ -62,16 +66,32 @@ export default function Layout({ children, title, description }) {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
       </Head>
-      <AppBar position="fixed">
+      <AppBar position="fixed" sx={{ backgroundColor: '#FFFF00', color: '#000' }}>
         <Toolbar>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link href="/" color="inherit" sx={{ textDecoration: 'none' }}>
               {settings.site_title}
             </Link>
+            <Box sx={{ display: { xs: 'none', lg: 'inline-block' }, ml: 1 }} >
+              <Typography component="span" sx={{ fontSize: 18 }}>{' - '}{settings.site_slogan}</Typography>
+            </Box>
           </Typography>
 
-          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', lg: 'inline-block' }, mr: 4, fontWeight: '700' }} >
+            {mobileMenu.map((s, index) => (
+              <Link key={index} href={s.url} color="inherit" sx={{ textDecoration: 'none', ml: 4 }} >
+                {s.title}
+              </Link>
+            ))}
+            {settings.mainnav.nav.map((item, index) => (
+              <Link key={index} href={item.url} color="inherit" sx={{ textDecoration: 'none', ml: 4 }} >
+                {item.title}
+              </Link>
+            ))}
+          </Box>
+
+          <Box sx={{ display: { xs: 'none', md: 'block' }, opacity: '0.66' }}>
             {social.map((s, i) => (
               <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
             ))}
@@ -82,7 +102,7 @@ export default function Layout({ children, title, description }) {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ ml: 2 }}
+            sx={{ ml: 2, p: '12px 12px 6px', display: { xs: 'block', lg: 'none' } }}
             onClick={toggleDrawer(true)}
           >
             <IoMenu />
@@ -141,16 +161,23 @@ export default function Layout({ children, title, description }) {
         </Box>
       </SwipeableDrawer>
 
-      <Box component="main" sx={{ mt: '64px', py: 8, px: 2, minHeight: 'calc(100vh - 120px)' }}>
+      <Box component="main" sx={{ mt: '64px', py: 8, px: 2, minHeight: 'calc(100vh - 192px)' }}>
         <Container maxWidth="lg">{children}</Container>
       </Box>
 
-      <Box component="footer" sx={{ backgroundColor: "#FAFAFA", py: 2 }}>
-        <Container maxWidth="lg">
-          <Typography component="p" align="center">
-            {settings.site_footer.replace("{year}", new Date().getFullYear())}
-          </Typography>
-        </Container>
+      <Box>
+        <Box sx={{ display: 'flex', justifyContent: 'center', opacity: '0.75', py: 2 }}>
+          {social.map((s, i) => (
+            <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
+          ))}
+        </Box>
+        <Box component="footer" sx={{ backgroundColor: "#FAFAFA", py: 2 }}>
+          <Container maxWidth="lg">
+            <Typography component="p" align="center">
+              {settings.site_footer.replace("{year}", new Date().getFullYear())}
+            </Typography>
+          </Container>
+        </Box>
       </Box>
     </>
   )

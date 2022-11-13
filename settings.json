@@ -1,6 +1,7 @@
 {
   "title": "Yleiset asetukset",
   "site_title": "The Tortoise Webcomic",
+  "site_slogan": "Coming to YOUR Internet every Tuesday!",
   "site_footer": "🄯 2022 Mieli \"SurrealPartisan\" Luukinen. No rights reserved.",
   "spring": {
     "title": "Tortoise Shop",
@@ -27,7 +28,7 @@
     "url": "https://www.reddit.com/r/thetortoisewebcomic/"
   },
   "nav_title_home": "The Tortoise Webcomic",
-  "nav_title_archive": "Comic Archive",
+  "nav_title_archive": "Archive",
   "mainnav": {
     "nav": [
       {
