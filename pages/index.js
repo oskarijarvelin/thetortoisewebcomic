@@ -16,7 +16,7 @@ export default function Home(props) {
   const newest = parseInt(props.comicCount);
 
   return (
-    <Layout title="The Tortoise Webcomic" description={`${settings.site_slogan} - ${settings.site_slogan}`}>
+    <Layout title="The Tortoise Webcomic" description={`${settings.site_title} - ${settings.site_slogan}`}>
       <SingleComic comic={data.comicsConnection.edges[0].node} newest={newest} />
     </Layout>
   );
