@@ -10,6 +10,6 @@ The author, **Mieli "SurrealPartisan" Luukinen** is a Finnish queer and autistic
 **Some semi-relevant links:**
 
 * [The Better Unit System](https://github.com/SurrealPartisan/Better-Unit-System "The Better Unit System") by the author, sometimes used in the comic.
-* [Paskasti kääntyvät Fingerporit](https://www.facebook.com/poorlytranslatedfingerporis "Paskasti kääntyvät Fingerporit")[ - another comic project by the author (and a friend). Not very active and of limited value to those who don't speak Finnish.](https://soundcloud.com/bythemeansofscience " By The Means Of Science")
+* [Paskasti kääntyvät Fingerporit](https://www.facebook.com/poorlytranslatedfingerporis "Paskasti kääntyvät Fingerporit") - another comic project by the author (and a friend). Not very active and of limited value to those who don't speak Finnish.
 * [By The Mean Of Science](https://soundcloud.com/bythemeansofscience " By The Means Of Science") - a weird music project by the author.
 
