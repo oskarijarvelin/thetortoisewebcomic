@@ -168,7 +168,7 @@ export default function Layout({ children, title, description }) {
       <Box>
         <Box sx={{ display: 'flex', justifyContent: 'center', opacity: '0.75', py: 2 }}>
           {social.map((s, i) => (
-            <IconLink key={i} title="s.title" url={s.url} icon={s.icon} />
+            <IconLink key={i} title={s.title} url={s.url} icon={s.icon} />
           ))}
         </Box>
         <Box component="footer" sx={{ backgroundColor: "#FAFAFA", py: 2 }}>

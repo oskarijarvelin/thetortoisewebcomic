@@ -6,6 +6,7 @@ export default function IconLink({title, url, icon}) {
     <Link href={url} passHref>
       <IconButton
         arian-label={title}
+        component="span"
         edge="start"
         color="inherit"
         target="_blank" 
