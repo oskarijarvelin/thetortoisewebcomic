@@ -1,4 +1,4 @@
-import { useTina } from "tinacms/dist/edit-state";
+import { useTina } from "tinacms/dist/react";
 import { client } from "../.tina/__generated__/client";
 import Layout from "../components/Layout";
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
