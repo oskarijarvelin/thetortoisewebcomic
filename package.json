@@ -13,6 +13,7 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.4",
     "@fontsource/roboto": "^4.5.8",
+    "@headlessui/react": "^1.7.10",
     "@mui/material": "^5.10.8",
     "@tinacms/auth": "^1.0.3",
     "fs": "^0.0.1-security",
@@ -32,8 +33,5 @@
     "@tinacms/cli": "^1.1.0",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6"
-  },
-  "resolutions": {
-    "@headlessui/react": "1.4.1"
   }
 }

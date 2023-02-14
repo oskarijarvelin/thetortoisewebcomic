@@ -11,7 +11,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
-import TinaProvider from "../.tina/components/TinaDynamicProvider";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -27,9 +26,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <TinaProvider>
-          <Component {...pageProps} />
-        </TinaProvider>
+        <Component {...pageProps} />
       </ThemeProvider>
     </CacheProvider>
   );
