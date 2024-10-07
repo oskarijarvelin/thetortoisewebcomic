@@ -1,10 +1,12 @@
 fragment PageParts on Page {
+  __typename
   title
   description
   body
 }
 
 fragment ComicsParts on Comics {
+  __typename
   index
   title
   date

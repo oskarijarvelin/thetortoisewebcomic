@@ -11,9 +11,13 @@
     "title": "Support us on Patreon",
     "url": "https://www.patreon.com/thetortoisewebcomic"
   },
-  "twitter":  {
-    "title": "Follow us on Twitter",
-    "url": "https://twitter.com/tortoisecomic"
+  "mastodon":  {
+    "title": "Follow us on Mastodon",
+    "url": "https://comics.town/@thetortoisewebcomic"
+  },
+  "lemmy":  {
+    "title": "Follow us on Lemmy.World",
+    "url": "https://lemmy.world/c/thetortoisewebcomic"
   },
   "facebook":  {
     "title": "Follow us on Facebook",

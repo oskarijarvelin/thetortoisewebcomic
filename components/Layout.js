@@ -19,8 +19,8 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { IoMenu } from 'react-icons/io5';
 import { BiHomeAlt, BiArchive } from 'react-icons/bi';
-import { SiSpringCreators } from 'react-icons/si';
-import { FaPatreon, FaTwitter, FaFacebook, FaInstagram, FaRedditAlien } from 'react-icons/fa';
+import { SiSpringCreators, SiLemmy } from 'react-icons/si';
+import { FaPatreon, FaMastodon, FaFacebook, FaInstagram, FaRedditAlien } from 'react-icons/fa';
 
 import settings from "../settings.json";
 
@@ -36,7 +36,8 @@ const mobileMenu = [
 const social = [
   { title: settings.spring.title, url: settings.spring.url, icon: <SiSpringCreators /> },
   { title: settings.patreon.title, url: settings.patreon.url, icon: <FaPatreon /> },
-  { title: settings.twitter.title, url: settings.twitter.url, icon: <FaTwitter /> },
+  { title: settings.mastodon.title, url: settings.mastodon.url, icon: <FaMastodon /> },
+  { title: settings.lemmy.title, url: settings.lemmy.url, icon: <SiLemmy /> },
   { title: settings.facebook.title, url: settings.facebook.url, icon: <FaFacebook /> },
   { title: settings.instagram.title, url: settings.instagram.url, icon: <FaInstagram /> },
   { title: settings.reddit.title, url: settings.reddit.url, icon: <FaRedditAlien /> },
